@@ -1,14 +1,7 @@
 package com.JavaCollectionsFramework;
-
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.*;
 
-@Data
-@AllArgsConstructor
+
 public class CollectionsDemo {
     public static int stringsWithStartSymbol(List<String> list, char startSymbol) {
         int counter = 0;
@@ -19,14 +12,14 @@ public class CollectionsDemo {
         }
         return counter;
     }
-    public static int humansWithSameLastName(List<Human> list, Human human) {
-        int counter = 0;
+    public static List<Human> humansWithSameLastName(List<Human> list, Human human) {
+        List<Human> listOfHumans = new ArrayList<>();
         for (Human h : list) {
             if (h.getLastName().equals(human.getLastName())) {
-                counter++;
+                listOfHumans.add(h);
             }
         }
-        return counter;
+        return listOfHumans;
     }
     public static List<Human> humansWithoutChosen(List<Human> list, Human human) {
         List<Human> humansWithoutChosen = new ArrayList<>();
@@ -38,10 +31,10 @@ public class CollectionsDemo {
         return humansWithoutChosen;
     }
 
-    public static List<HashSet<Integer>> hashSetsWithoutIntersection(List<HashSet<Integer>> list,
-                                                                     HashSet<Integer> hashSet) {
-        List<HashSet<Integer>> hashSetsWithoutIntersection = new ArrayList<>();
-        for (HashSet<Integer> h : list) {
+    public static List<Set<Integer>> hashSetsWithoutIntersection(List<Set<Integer>> list,
+                                                                     Set<Integer> hashSet) {
+        List<Set<Integer>> hashSetsWithoutIntersection = new ArrayList<>();
+        for (Set<Integer> h : list) {
             for (Integer i : h) {
                 if (!hashSet.contains(i)) {
                     hashSetsWithoutIntersection.add(h);
@@ -96,8 +89,8 @@ public class CollectionsDemo {
         return mapIdAge;
     }
 
-    public static HashMap<Integer, List<Human>> mapAgeList(List<Human> humans) {
-        HashMap<Integer, List<Human>> mapAgeList = new HashMap<>();
+    public static Map<Integer, List<Human>> mapAgeList(List<Human> humans) {
+        Map<Integer, List<Human>> mapAgeList = new HashMap<>();
         for (Human h : humans) {
             if (!mapAgeList.containsKey(h.getAge())) {
                 mapAgeList.put(h.getAge(), new ArrayList<>());
@@ -107,8 +100,8 @@ public class CollectionsDemo {
         return mapAgeList;
     }
 
-    public static HashMap<Integer, HashMap<Character, List<Human>>> mapAgeToLetterToList(List<Human> humans) {
-        HashMap<Integer, HashMap<Character, List<Human>>> map = new HashMap<>();
+    public static Map<Integer, HashMap<Character, List<Human>>> mapAgeToLetterToList(List<Human> humans) {
+        Map<Integer, HashMap<Character, List<Human>>> map = new HashMap<>();
         for (Human h : humans) {
             if (!map.containsKey(h.getAge())) {
                 map.put(h.getAge(), new HashMap<>());
